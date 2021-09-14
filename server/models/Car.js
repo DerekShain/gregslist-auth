@@ -7,13 +7,12 @@ export const CarSchema = new Schema(
       type: String,
       required: true,
       minlength: 3,
-      // NOTE enum is a list to choose from.
-      // enum: ['toyota', 'tesla', 'honda', 'kia', 'bmw'],
+      // enum: ['toyota', 'tesla', 'honda', 'kia', 'bmw'],     // NOTE enum is a list to choose from.
       lowercase: true
     },
     model: {
       type: String,
-      required: true
+      required: [true, 'who makes it?']
     },
     price: {
       type: Number,
@@ -34,7 +33,6 @@ export const CarSchema = new Schema(
       type: String,
       required: true
     },
-
     // NOTE this is a relationship more here later
     creatorId: {
       type: Schema.Types.ObjectId,
@@ -44,3 +42,10 @@ export const CarSchema = new Schema(
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
+
+CarSchema.virtual('creator', {
+  localField: 'creatorId',
+  foreignField: '_id',
+  ref: 'Account',
+  justOne: true
+})
