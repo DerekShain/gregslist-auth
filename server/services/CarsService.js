@@ -38,6 +38,7 @@ class CarsService {
 
   async createCar(carData) {
     const car = await dbContext.Cars.create(carData)
+    await car.populate('creator', 'name picture').execPopulate()
     return car
   }
 

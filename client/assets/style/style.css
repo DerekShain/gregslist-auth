@@ -1,0 +1,37 @@
+/* BASIC STYLES HERE */
+.display-img{
+    width: 50vw;
+    padding: 2px;
+}
+
+.center-stuff{
+    text-align: center;
+}
+
+.btn-black{
+    background-color: black;
+}
+
+.bg-dark{
+    background-color: #0b1019 !important
+}
+
+.bg-lightdark{
+    background-color: #1f2c44;
+}
+
+.spacing{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+    justify-content: space-evenly;
+}

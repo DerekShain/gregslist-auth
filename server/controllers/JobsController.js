@@ -37,6 +37,7 @@ export class JobsController extends BaseController {
       logger.log('Who is this?', req.userIno)
       req.body.creatorId = req.userInfo.id
       const job = await jobsService.createJob(req.body)
+      job.creator = req.userInfo
       res.send(job)
     } catch (error) {
       next(error)

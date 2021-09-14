@@ -35,6 +35,7 @@ class JobsService {
 
   async createJob(jobData) {
     const job = await dbContext.Jobs.create(jobData)
+    await job.populate('creator', 'name picture').execPopulate()
     return job
   }
 

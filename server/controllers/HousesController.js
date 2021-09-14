@@ -37,6 +37,7 @@ export class HousesController extends BaseController {
       logger.log('Who is this?', req.userIno)
       req.body.creatorId = req.userInfo.id
       const house = await housesService.createHouse(req.body)
+      house.creator = req.userInfo
       res.send(house)
     } catch (error) {
       next(error)

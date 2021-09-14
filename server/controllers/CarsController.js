@@ -34,11 +34,12 @@ export class CarsController extends BaseController {
 
   async createCar(req, res, next) {
     try {
-      logger.log('Who is this?', req.userIno)
+      logger.log('Who is this?', req.userInfo)
       // REVIEW never trust the client
       // force the creatorId to be loggedin user
       req.body.creatorId = req.userInfo.id
       const car = await carsService.createCar(req.body)
+      car.creator = req.userInfo
       res.send(car)
     } catch (error) {
       next(error)

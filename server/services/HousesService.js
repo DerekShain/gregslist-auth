@@ -37,6 +37,7 @@ class HousesService {
 
   async createHouse(houseData) {
     const house = await dbContext.Houses.create(houseData)
+    await house.populate('creator', 'name picture').execPopulate()
     return house
   }
 
